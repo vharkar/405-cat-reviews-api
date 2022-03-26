@@ -1,11 +1,7 @@
 import dash
 from dash import dcc, html
-
 from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
-
-
-
 from helpers.key_finder import api_key
 from helpers.api_call import *
 
