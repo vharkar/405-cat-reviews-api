@@ -12,7 +12,7 @@ from helpers.api_call import *
 tabtitle = 'Cats'
 sourceurl = 'https://docs.thecatapi.com/'
 sourceurl2 = 'https://docs.thecatapi.com/api-reference/breeds/breeds-list'
-githublink = 'https://github.com/vharkar/405-movie-reviews-api'
+githublink = 'https://github.com/vharkar/405-cat-reviews-api'
 
 
 ########### Initiate the app
@@ -66,10 +66,22 @@ app.layout = html.Div(children=[
         html.Div([
                 html.Br(),
                 dcc.Graph(id='ratings')
-        ], className='six columns'),
+        ], style={ 'padding': '6px',
+                           'font-size': '10px',
+                            # 'height': '400px',
+                           'border': 'thick grey solid',
+                           'textAlign': 'left',
+        }, className='six columns'),
     
         # Cat Picture
-        html.Div([html.Img(id='catpic', style={'height':'50%', 'width':'50%'})]),
+        html.Div([
+            html.Img(id='catpic', style={'height':'50%', 'width':'50%'})
+        ], style={ 'padding': '6px',
+                           'font-size': '10px',
+                            # 'height': '400px',
+                           'border': 'thick grey solid',
+                           'textAlign': 'left',
+        }, className='eight columns'),
 
         # Output
         html.Div([
@@ -77,9 +89,9 @@ app.layout = html.Div(children=[
             html.Br(),
             html.A('Code on Github', href=githublink, target="_blank"),
             html.Br(),
-            html.A("Data Source: Kaggle", href=sourceurl, target="_blank"),
+            html.A("Data Source", href=sourceurl, target="_blank"),
             html.Br(),
-            html.A("Data Source: TMDB", href=sourceurl2, target="_blank"),
+            html.A("API", href=sourceurl2, target="_blank"),
         ], className='twelve columns'),
     ]
 )
@@ -113,18 +125,6 @@ def on_select(breed):
     temperament = cats_df.loc[cats_df['id']==breed][['temperament']].iat[0,0]
 
     return origin, temperament, ratings_fig, catpic
-
-#@app.callback([Output('movie-title', 'children'),
-#                Output('movie-release', 'children'),
-#                Output('movie-overview', 'children'),
-#                ],
-#              [Input('tmdb-store', 'modified_timestamp')],
-#              [State('tmdb-store', 'data')])
-#def on_data(ts, data):
-#    if ts is None:
-#        raise PreventUpdate
-#    else:
-#        return data['title'], data['release_date'], data['overview']
 
 
 ############ Deploy
