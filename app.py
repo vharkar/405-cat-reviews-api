@@ -51,8 +51,6 @@ app.layout = html.Div(children=[
                            'font-size': '22px',
                             # 'height': '400px',
                            'border': 'thick red solid',
-                           'color': 'rgb(255, 255, 255)',
-                           'backgroundColor': '#536869',
                            'textAlign': 'left',
                 }, className='six columns'),
             ], className='twelve columns'),
@@ -85,12 +83,16 @@ app.layout = html.Div(children=[
                Output('ratings', 'children'),
                Output('catpic', 'children')],
               [Input('breed-drop', 'value')])
-def on_select(breed, output):
-   attributes_df = cats_df[cats_df['id']==breed][['adaptability',    'affection_level','child_friendly','dog_friendly','energy_level','grooming','health_issues','intelligence','shedding_level','social_needs','stranger_friendly']]
-   ratings = get_ratings_fig(attributes_df)
-   origin = cats_df[cats_df['id']==breed]['origin']
-   temperament = cats_df[cats_df['id']==breed]['temperament']
-   catpic = cats_df[cats_df['id']==breed]['url']
+def on_select(breed):
+   
+   breed_attrs_df = cats_df[cats_df['id']==breed][['adaptability',    'affection_level','child_friendly','dog_friendly','energy_level','grooming','health_issues','intelligence','shedding_level','social_needs','stranger_friendly']]
+
+   ratings = get_ratings_fig(breed_attrs_df)
+
+   catpic  = cats_df.loc[cats_df['id']==breed][['image.url']].iat[0,0]
+   origin  = cats_df.loc[cats_df['id']==breed][['origin']].iat[0,0]
+   temperament = cats_df.loc[cats_df['id']==breed][['temperament']].iat[0,0]
+
    return origin, temperament, ratings, catpic
 
 #@app.callback([Output('movie-title', 'children'),
