@@ -85,7 +85,7 @@ app.layout = html.Div(children=[
               [Input('breed-drop', 'value')])
 def on_select(breed):
    
-   breed_attrs_df = cats_df[cats_df['id']==breed][['adaptability',    'affection_level','child_friendly','dog_friendly','energy_level','grooming','health_issues','intelligence','shedding_level','social_needs','stranger_friendly']]
+   breed_attrs_df =  cats_df[cats_df['id']==breed[['adaptability','affection_level','child_friendly','dog_friendly','energy_level','grooming','health_issues','intelligence','shedding_level','social_needs','stranger_friendly']]
 
    ratings_df = get_ratings_fig(breed_attrs_df)
    fig = ratings_df.plot(kind="barh")
