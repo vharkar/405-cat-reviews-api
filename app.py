@@ -22,7 +22,7 @@ app.title=tabtitle
 
 breeds=[]
 names=[]
-cats_df, breeds, names = api_get_breeds_list_and_df()
+breeds, names, cats_df = api_get_breeds_list_and_df()
 
 ########### Layout
 
