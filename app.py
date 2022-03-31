@@ -8,10 +8,10 @@ from helpers.api_call import *
 
 ########### Define a few variables ######
 
-tabtitle = 'Movies'
-sourceurl = 'https://www.kaggle.com/tmdb/tmdb-movie-metadata'
-sourceurl2 = 'https://developers.themoviedb.org/3/getting-started/introduction'
-githublink = 'https://github.com/austinlasseter/tmdb-rf-classifier'
+tabtitle = 'Cats'
+sourceurl = 'https://docs.thecatapi.com/'
+sourceurl2 = 'https://docs.thecatapi.com/api-reference/breeds/breeds-list'
+githublink = 'https://github.com/vharkar/405-movie-reviews-api'
 
 
 
