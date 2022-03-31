@@ -23,7 +23,7 @@ def api_get_breeds_list_and_df():
     cats_df.drop(['cfa_url', 'vetstreet_url', 'vcahospitals_url', 'country_codes', 'country_code', 'alt_names'], axis=1, inplace=True)
     return breeds_list, names_list, cats_df
     
-def get_ratings_fig(breed_df):
+def get_ratings_fig(attributes_df):
     attrib_names=[]
     attrib_values=[]
     for attrib in attributes_df.columns:
