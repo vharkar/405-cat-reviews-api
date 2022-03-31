@@ -1,4 +1,5 @@
 import dash
+import plotly.graph_objs as go
 from dash import dcc, html
 from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
@@ -60,7 +61,7 @@ app.layout = html.Div(children=[
         ], className='twelve columns'),
     
         # Cat Picture
-        html.Div(id='catpic', children=[]),
+        html.Div([html.Img(id='catpic')]),
 
         # Output
         html.Div([
@@ -80,7 +81,6 @@ app.layout = html.Div(children=[
 # TMDB API call
 @app.callback([Output('origin', 'children'),
                Output('temperament', 'children'),
-               Output('ratings', 'children'),
                Output('catpic', 'children')],
               [Input('breed-drop', 'value')])
 def on_select(breed):
@@ -103,7 +103,7 @@ def on_select(breed):
     origin  = cats_df.loc[cats_df['id']==breed][['origin']].iat[0,0]
     temperament = cats_df.loc[cats_df['id']==breed][['temperament']].iat[0,0]
 
-    return origin, temperament, ratings_fig, catpic
+    return origin, temperament, catpic
 
 #@app.callback([Output('movie-title', 'children'),
 #                Output('movie-release', 'children'),
