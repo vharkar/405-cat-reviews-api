@@ -81,7 +81,7 @@ app.layout = html.Div(children=[
 # TMDB API call
 @app.callback([Output('origin', 'children'),
                Output('temperament', 'children'),
-               Output('catpic', 'children')],
+               Output('catpic', 'src')],
               [Input('breed-drop', 'value')])
 def on_select(breed):
    
