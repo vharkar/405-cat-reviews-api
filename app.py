@@ -36,7 +36,7 @@ app.layout = html.Div(children=[
                          dcc.Dropdown(
                            id='breed-drop',
                            options=[{'label': n, 'value': v} for n, v in zip(names, breeds)],
-                           value='sphy'),
+                           value='abys'),
                        html.Br()
                     ], className='three columns'),
                 
@@ -50,7 +50,7 @@ app.layout = html.Div(children=[
                 ], style={ 'padding': '12px',
                            'font-size': '22px',
                             # 'height': '400px',
-                           'border': 'thick red solid',
+                           'border': 'thick grey solid',
                            'textAlign': 'left',
                 }, className='six columns'),
             ], className='twelve columns'),
@@ -87,13 +87,14 @@ def on_select(breed):
    
    breed_attrs_df = cats_df[cats_df['id']==breed][['adaptability',    'affection_level','child_friendly','dog_friendly','energy_level','grooming','health_issues','intelligence','shedding_level','social_needs','stranger_friendly']]
 
-   ratings = get_ratings_fig(breed_attrs_df)
+   ratings_df = get_ratings_fig(breed_attrs_df)
+   fig = ratings_df.plot(kind="barh")
 
    catpic  = cats_df.loc[cats_df['id']==breed][['image.url']].iat[0,0]
    origin  = cats_df.loc[cats_df['id']==breed][['origin']].iat[0,0]
    temperament = cats_df.loc[cats_df['id']==breed][['temperament']].iat[0,0]
 
-   return origin, temperament, ratings, catpic
+   return origin, temperament, fig, catpic
 
 #@app.callback([Output('movie-title', 'children'),
 #                Output('movie-release', 'children'),

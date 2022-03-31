@@ -35,5 +35,4 @@ def get_ratings_fig(attributes_df):
         "rating": attrib_values
     })
     rankings_df = rankings_df.set_index('attribute')
-    fig = rankings_df.plot(kind="barh")
-    return fig
+    return rankings_df
