@@ -34,9 +34,10 @@ def get_ratings_fig(attributes_df):
         
         
     rankings = go.Bar(
-      x=attrib_names,
-      y=attrib_values,
+      y=attrib_names,
+      x=attrib_values,
       name='Traits',
+      orientation='h',
       marker={'color':'green'}
     )
 

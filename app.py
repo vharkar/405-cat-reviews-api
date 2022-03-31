@@ -48,11 +48,7 @@ app.layout = html.Div(children=[
                     html.Div([
                         html.H6('Temperament:'),
                         html.Div(id='temperament', children=[])
-                    ], className='three columns'),
-                    html.Div([
-                        html.Br(),
-                        dcc.Graph(id='ratings')
-                    ], className='three columns'),
+                    ], className='three columns')
                 
                 ], style={ 'padding': '12px',
                            'font-size': '22px',
@@ -60,6 +56,12 @@ app.layout = html.Div(children=[
                            'border': 'thick grey solid',
                            'textAlign': 'left',
                 }, className='six columns'),
+                
+                html.Div([
+                        html.Br(),
+                        dcc.Graph(id='ratings')
+                ], className='six columns'),
+                
             ], className='twelve columns'),
         
             html.Br(),
