@@ -45,6 +45,7 @@ app.layout = html.Div(children=[
                         html.H6('Country of Origin:'),
                         html.Div(id='origin', children=[])
                     ], className='three columns'),
+                    
                     html.Div([
                         html.H6('Temperament:'),
                         html.Div(id='temperament', children=[])
@@ -55,7 +56,12 @@ app.layout = html.Div(children=[
                             # 'height': '400px',
                            'border': 'thick grey solid',
                            'textAlign': 'left',
-                }, className='six columns')
+                }, className='six columns'),
+                
+                html.Div([
+                        html.H6('Description:'),
+                        html.Div(id='description', children=[])
+                ], className='six columns')
                 
             ], className='twelve columns'),
 
@@ -97,6 +103,7 @@ app.layout = html.Div(children=[
 # TMDB API call
 @app.callback([Output('origin', 'children'),
                Output('temperament', 'children'),
+               Output('description', 'children'),
                Output('recommendation', 'children'),
                Output('ratings', 'figure'),
                Output('catpic', 'src')],
@@ -124,7 +131,7 @@ def on_select(breed):
     origin  = cats_df.loc[cats_df['id']==breed][['origin']].iat[0,0]
     temperament = cats_df.loc[cats_df['id']==breed][['temperament']].iat[0,0]
 
-    return origin, temperament, recommendation, ratings_fig, catpic
+    return origin, temperament, description, recommendation, ratings_fig, catpic
 
 
 ############ Deploy
