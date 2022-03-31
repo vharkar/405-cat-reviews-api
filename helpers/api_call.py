@@ -4,6 +4,7 @@ import json
 import requests
 import random
 import pandas as pd
+import plotly.graph_objs as go
 
 def api_get_breeds_list_and_df():
     breeds_url=f'https://api.thecatapi.com/v1/breeds'
@@ -26,13 +27,19 @@ def api_get_breeds_list_and_df():
 def get_ratings_fig(attributes_df):
     attrib_names=[]
     attrib_values=[]
+    
     for attrib in attributes_df.columns:
         attrib_names.append(attrib)
         attrib_values.append(attributes_df.loc[0][attrib])
         
-    rankings_df = pd.DataFrame({
-        "attribute": attrib_names, 
-        "rating": attrib_values
-    })
-    rankings_df = rankings_df.set_index('attribute')
-    return rankings_df
+        
+    rankings = go.Bar(
+      x=attrib_names,
+      y=attrib_values,
+      name='Traits',
+      orientation='h',
+      marker={'color':'green'}
+    )
+
+    return go.Figure(rankings)
+

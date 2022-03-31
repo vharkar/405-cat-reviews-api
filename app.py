@@ -97,14 +97,13 @@ def on_select(breed):
                                                   'social_needs',\
                                                   'stranger_friendly']]
 
-    ratings_df = get_ratings_fig(breed_attrs_df)
-    fig = ratings_df.plot(kind="barh")
+    ratings_fig = get_ratings_fig(breed_attrs_df)
 
     catpic  = cats_df.loc[cats_df['id']==breed][['image.url']].iat[0,0]
     origin  = cats_df.loc[cats_df['id']==breed][['origin']].iat[0,0]
     temperament = cats_df.loc[cats_df['id']==breed][['temperament']].iat[0,0]
 
-    return origin, temperament, fig, catpic
+    return origin, temperament, ratings_fig, catpic
 
 #@app.callback([Output('movie-title', 'children'),
 #                Output('movie-release', 'children'),
