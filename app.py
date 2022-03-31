@@ -5,7 +5,7 @@ from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
 from helpers.key_finder import api_key
 from helpers.api_call import *
-
+from helpers.vader import sentiment_scores
 
 ########### Define a few variables ######
 
@@ -58,30 +58,26 @@ app.layout = html.Div(children=[
                 }, className='six columns')
                 
             ], className='twelve columns'),
-        
-            html.Br(),
 
         ], className='twelve columns'),
-                
+              
+        # Cat Ratings Graph
         html.Div([
                 html.Br(),
                 dcc.Graph(id='ratings')
-        ], style={ 'padding': '6px',
-                           'font-size': '10px',
-                            # 'height': '400px',
-                           'border': 'thick grey solid',
-                           'textAlign': 'left',
-        }, className='six columns'),
+        ], className='six columns'),
+    
+        # Recommendation
+        html.Div([
+                html.Br(),
+                html.H6('Recommendation as a family pet:'),
+                html.Div(id='recommendation', children=[])
+        ], className='six columns'),
     
         # Cat Picture
         html.Div([
             html.Img(id='catpic', style={'height':'50%', 'width':'50%'})
-        ], style={ 'padding': '6px',
-                           'font-size': '10px',
-                            # 'height': '400px',
-                           'border': 'thick grey solid',
-                           'textAlign': 'left',
-        }, className='eight columns'),
+        ], className='eight columns'),
 
         # Output
         html.Div([
@@ -101,6 +97,7 @@ app.layout = html.Div(children=[
 # TMDB API call
 @app.callback([Output('origin', 'children'),
                Output('temperament', 'children'),
+               Output('recommendation', 'children'),
                Output('ratings', 'figure'),
                Output('catpic', 'src')],
                Input('breed-drop', 'value'))
@@ -120,11 +117,14 @@ def on_select(breed):
     breed_attrs_df.reset_index(inplace=True)
     ratings_fig = get_ratings_fig(breed_attrs_df)
 
+    description = cats_df.loc[cats_df['id']==breed][['description']].iat[0,0]
+    recommendation = sentiment_scores(description)
+    
     catpic  = cats_df.loc[cats_df['id']==breed][['image.url']].iat[0,0]
     origin  = cats_df.loc[cats_df['id']==breed][['origin']].iat[0,0]
     temperament = cats_df.loc[cats_df['id']==breed][['temperament']].iat[0,0]
 
-    return origin, temperament, ratings_fig, catpic
+    return origin, temperament, recommendation, ratings_fig, catpic
 
 
 ############ Deploy

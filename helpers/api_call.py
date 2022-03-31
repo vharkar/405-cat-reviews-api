@@ -28,7 +28,7 @@ def get_ratings_fig(attributes_df):
     attrib_names=[]
     attrib_values=[]
     
-    for attrib in attributes_df.columns:
+    for attrib in attributes_df.columns[1:]:
         attrib_names.append(attrib)
         attrib_values.append(attributes_df.loc[0][attrib])
         
