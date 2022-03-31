@@ -41,8 +41,14 @@ app.layout = html.Div(children=[
                        html.Br()
                     ], className='three columns'),
                 
-                    html.Div(id='origin', children=[]),
-                    html.Div(id='temperament', children=[]),
+                    html.Div([
+                        html.H6('Country of Origin:'),
+                        html.Div(id='origin', children=[])
+                    ]),
+                    html.Div([
+                        html.H6('Temperament:'),
+                         html.Div(id='temperament', children=[])
+                    ]),
                     html.Div([
                         html.Br(),
                         dcc.Graph(id='ratings')

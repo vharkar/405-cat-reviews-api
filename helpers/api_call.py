@@ -16,8 +16,8 @@ def api_get_breeds_list_and_df():
     names_list=[]
     
     for breed in cats_data:
-       breeds_list.append(breed['id'])
-       names_list.append(breed['name'])
+        breeds_list.append(breed['id'])
+        names_list.append(breed['name'])
         
     cats_dict = pd.json_normalize(cats_response.json())
     cats_df = pd.DataFrame(cats_dict)
@@ -37,7 +37,6 @@ def get_ratings_fig(attributes_df):
       x=attrib_names,
       y=attrib_values,
       name='Traits',
-      orientation='h',
       marker={'color':'green'}
     )
 
