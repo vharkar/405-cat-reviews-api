@@ -44,11 +44,11 @@ app.layout = html.Div(children=[
                     html.Div([
                         html.H6('Country of Origin:'),
                         html.Div(id='origin', children=[])
-                    ]),
+                    ], className='three columns'),
                     html.Div([
                         html.H6('Temperament:'),
-                         html.Div(id='temperament', children=[])
-                    ]),
+                        html.Div(id='temperament', children=[])
+                    ], className='three columns'),
                     html.Div([
                         html.Br(),
                         dcc.Graph(id='ratings')
@@ -67,7 +67,7 @@ app.layout = html.Div(children=[
         ], className='twelve columns'),
     
         # Cat Picture
-        html.Div([html.Img(id='catpic')]),
+        html.Div([html.Img(id='catpic', style={'height':'50%', 'width':'50%'})]),
 
         # Output
         html.Div([
@@ -87,8 +87,9 @@ app.layout = html.Div(children=[
 # TMDB API call
 @app.callback([Output('origin', 'children'),
                Output('temperament', 'children'),
+               Output('ratings', 'figure'),
                Output('catpic', 'src')],
-              [Input('breed-drop', 'value')])
+               Input('breed-drop', 'value'))
 def on_select(breed):
    
     breed_attrs_df = cats_df[cats_df['id']==breed][['adaptability',\
@@ -109,7 +110,7 @@ def on_select(breed):
     origin  = cats_df.loc[cats_df['id']==breed][['origin']].iat[0,0]
     temperament = cats_df.loc[cats_df['id']==breed][['temperament']].iat[0,0]
 
-    return origin, temperament, catpic
+    return origin, temperament, ratings_fig, catpic
 
 #@app.callback([Output('movie-title', 'children'),
 #                Output('movie-release', 'children'),
