@@ -32,7 +32,6 @@ def get_ratings_fig(attributes_df):
         attrib_names.append(attrib)
         attrib_values.append(attributes_df.loc[0][attrib])
         
-        
     rankings = go.Bar(
       y=attrib_names,
       x=attrib_values,

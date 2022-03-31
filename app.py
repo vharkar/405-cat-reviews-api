@@ -55,18 +55,18 @@ app.layout = html.Div(children=[
                             # 'height': '400px',
                            'border': 'thick grey solid',
                            'textAlign': 'left',
-                }, className='six columns'),
-                
-                html.Div([
-                        html.Br(),
-                        dcc.Graph(id='ratings')
-                ], className='six columns'),
+                }, className='six columns')
                 
             ], className='twelve columns'),
         
             html.Br(),
 
         ], className='twelve columns'),
+                
+        html.Div([
+                html.Br(),
+                dcc.Graph(id='ratings')
+        ], className='six columns'),
     
         # Cat Picture
         html.Div([html.Img(id='catpic', style={'height':'50%', 'width':'50%'})]),
@@ -105,7 +105,7 @@ def on_select(breed):
                                                   'shedding_level',\
                                                   'social_needs',\
                                                   'stranger_friendly']]
-
+    breed_attrs_df.reset_index(inplace=True)
     ratings_fig = get_ratings_fig(breed_attrs_df)
 
     catpic  = cats_df.loc[cats_df['id']==breed][['image.url']].iat[0,0]
