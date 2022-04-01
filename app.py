@@ -49,19 +49,19 @@ app.layout = html.Div(children=[
                     html.Div([
                         html.H6('Temperament:'),
                         html.Div(id='temperament', children=[])
-                    ], className='three columns')
+                    ], className='three columns'), 
+                                    
+                    html.Div([
+                        html.H6('Description:'),
+                        html.Div(id='description', children=[])
+                    ], className='six columns')
                 
                 ], style={ 'padding': '12px',
                            'font-size': '22px',
                             # 'height': '400px',
                            'border': 'thick grey solid',
                            'textAlign': 'left',
-                }, className='six columns'),
-                
-                html.Div([
-                        html.H6('Description:'),
-                        html.Div(id='description', children=[])
-                ], className='six columns')
+                }, className='six columns')
                 
             ], className='twelve columns'),
 
@@ -71,19 +71,20 @@ app.layout = html.Div(children=[
         html.Div([
                 html.Br(),
                 dcc.Graph(id='ratings')
-        ], className='six columns'),
+        ], style={ 'align': 'center'}, className='six columns'),
     
         # Recommendation
         html.Div([
                 html.Br(),
                 html.H6('Recommendation as a family pet:'),
                 html.Div(id='recommendation', children=[])
-        ], className='six columns'),
+        ], style={ 'align': 'center'}, className='six columns'),
     
         # Cat Picture
         html.Div([
+            htmlBr(),
             html.Img(id='catpic', style={'height':'50%', 'width':'50%'})
-        ], className='eight columns'),
+        ], style={ 'align': 'center'}, className='eight columns'),
 
         # Output
         html.Div([
