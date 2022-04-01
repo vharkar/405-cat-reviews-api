@@ -57,10 +57,10 @@ app.layout = html.Div(children=[
                     ], className='six columns')
                 
                 ], style={ 'padding': '12px',
-                           'font-size': '22px',
-                            # 'height': '400px',
+                           'font-size': '20px',
                            'border': 'thick grey solid',
                            'textAlign': 'left',
+                           'align':'center'
                 }, className='six columns')
                 
             ], className='twelve columns'),
@@ -70,13 +70,14 @@ app.layout = html.Div(children=[
         # Cat Ratings Graph
         html.Div([
                 html.Br(),
+                html.H4('Other attributes to help you evaluate this cat'),
                 dcc.Graph(id='ratings')
         ], style={ 'align': 'center'}, className='six columns'),
     
         # Recommendation
         html.Div([
                 html.Br(),
-                html.H6('Recommendation as a family pet:'),
+                html.H4('Recommendation as a family pet:'),
                 html.Div(id='recommendation', children=[])
         ], style={ 'align': 'center'}, className='six columns'),
     
@@ -95,6 +96,7 @@ app.layout = html.Div(children=[
             html.A("Data Source", href=sourceurl, target="_blank"),
             html.Br(),
             html.A("API", href=sourceurl2, target="_blank"),
+            html.Br()
         ], className='twelve columns'),
     ]
 )
