@@ -82,7 +82,7 @@ app.layout = html.Div(children=[
     
         # Cat Picture
         html.Div([
-            htmlBr(),
+            html.Br(),
             html.Img(id='catpic', style={'height':'50%', 'width':'50%'})
         ], style={ 'align': 'center'}, className='eight columns'),
 
