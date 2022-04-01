@@ -29,7 +29,7 @@ breeds, names, cats_df = api_get_breeds_list_and_df()
 
 app.layout = html.Div(children=[
         html.Div([
-            html.H1(['Which cat is best for your family ?']),
+            html.H1(['Which cat would be the best fit for your family ?']),
             html.Div([
                 html.Div([
                     html.Div([
@@ -70,14 +70,14 @@ app.layout = html.Div(children=[
         # Cat Ratings Graph
         html.Div([
                 html.Br(),
-                html.H4('Other attributes to help you evaluate this cat'),
+                html.H4('Additional features of this breed'),
                 dcc.Graph(id='ratings')
         ], style={ 'align': 'center'}, className='six columns'),
     
         # Recommendation
         html.Div([
                 html.Br(),
-                html.H4('Recommendation as a family pet:'),
+                html.H4('Recommendation as a family pet'),
                 html.Div(id='recommendation', children=[])
         ], style={ 'align': 'center'}, className='six columns'),
     
