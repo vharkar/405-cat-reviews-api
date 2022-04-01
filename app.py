@@ -61,7 +61,7 @@ app.layout = html.Div(children=[
                            'border': 'thick grey solid',
                            'textAlign': 'left',
                            'align':'center'
-                }, className='six columns')
+                }, className='twelve columns')
                 
             ], className='twelve columns'),
 
@@ -70,20 +70,20 @@ app.layout = html.Div(children=[
         # Cat Ratings Graph
         html.Div([
                 dcc.Graph(id='ratings')
-        ], style={ 'align': 'center'}, className='six columns'),
+        ], style={ 'align': 'center'}, className='ten columns'),
     
         # Recommendation
         html.Div([
                 html.Br(),
                 html.H4('Recommendation as a family pet'),
                 html.Div(id='recommendation', children=[])
-        ], style={ 'align': 'center'}, className='six columns'),
+        ], style={ 'align': 'center'}, className='ten columns'),
     
         # Cat Picture
         html.Div([
             html.Br(),
             html.Img(id='catpic', style={'height':'50%', 'width':'50%'})
-        ], style={ 'align': 'center'}, className='eight columns'),
+        ], style={ 'align': 'center'}, className='ten columns'),
 
         # Output
         html.Div([
