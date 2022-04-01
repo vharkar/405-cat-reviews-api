@@ -40,5 +40,9 @@ def get_ratings_fig(attributes_df):
       marker={'color':'green'}
     )
 
-    return go.Figure(rankings)
+    figure = go.Figure(rankings)
+    figure.update_traces(marker_line_width=1.5, opacity=0.6)
+    figure.update_layout(title_text='Additional features of this breed')
+    
+    return figure
 

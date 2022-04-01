@@ -39,7 +39,7 @@ app.layout = html.Div(children=[
                            options=[{'label': n, 'value': v} for n, v in zip(names, breeds)],
                            value='abys'),
                        html.Br()
-                    ], className='three columns'),
+                    ], className='five columns'),
                 
                     html.Div([
                         html.H6('Country of Origin:'),
@@ -69,8 +69,6 @@ app.layout = html.Div(children=[
               
         # Cat Ratings Graph
         html.Div([
-                html.Br(),
-                html.H4('Additional features of this breed'),
                 dcc.Graph(id='ratings')
         ], style={ 'align': 'center'}, className='six columns'),
     
